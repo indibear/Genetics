@@ -1,0 +1,26 @@
+.quirshiRow{
+  width: 75%;
+  padding: 25px;
+  margin: 20px;
+  text-align: center;
+}
+
+.quirshiPanel{
+  background-color: #a4adbc;
+  border: 2px solid black;
+  border-radius: 7px;
+  padding: 25px;
+  margin: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.quirshiPanelTitle{
+  background-color: ;
+  width: 50%
+}
+
+.quirshiPopulation{
+  top: 10px;
+  background-color: #7c8d9b
+}
