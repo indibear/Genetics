@@ -1,11 +1,16 @@
+var baseAlleles = ['black', 'brown', 'cinnamon'];
+var dilutionAlleles = ['off', 'on'];
+
 class QuirshiGenome {
+  static selectRandomElementPair(arr){
+    return [Math.floor(Math.random() * arr.length),Math.floor(Math.random() * arr.length)];
+  }
   static randomGenotype(){
-    var baseAlleles = ['black', 'brown', 'cinnamon'];
-    var dilutionAlleles = ['on', 'off'];
-    var base = baseAlleles[Math.floor(Math.random() * baseAlleles.length)]
-    var dilution = dilutionAlleles[Math.floor(Math.random() * dilutionAlleles.length)]
+    var base = QuirshiGenome.selectRandomElementPair(baseAlleles);
+    var dilution = QuirshiGenome.selectRandomElementPair(dilutionAlleles);
     return new QuirshiGenome(base, dilution);
   }
+
   constructor(base, dilution) {
     this.base = base;
     this.dilution = dilution;
@@ -19,4 +24,10 @@ class Quirshi {
 }
 
 genome = QuirshiGenome.randomGenotype();
-console.log(genome);
+div = document.getElementById('quirshi');
+div.innerText = baseAlleles[genome.base[0]]
+                +' '
+                + baseAlleles[genome.base[1]] + ' '
+                + dilutionAlleles[genome.dilution[0]]
+                +' '
+                + dilutionAlleles[genome.dilution[1]]
