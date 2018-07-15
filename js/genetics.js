@@ -47,11 +47,3 @@ for (q of quirshiPopulation) {
   pop.appendChild(span);
 
 }
-genome = QuirshiGenome.randomGenotype();
-div = document.getElementById('quirshi');
-div.innerText = baseAlleles[genome.base[0]]
-                +' '
-                + baseAlleles[genome.base[1]] + ' '
-                + dilutionAlleles[genome.dilution[0]]
-                +' '
-                + dilutionAlleles[genome.dilution[1]]
