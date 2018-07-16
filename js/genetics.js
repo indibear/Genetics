@@ -1,5 +1,5 @@
 var baseColours = ['#2f3030', '#442e09', '#89602a' ]
-var diluteColours = ['#83898c', '#9e846b', '#d1b798' ]
+var diluteColours = ['#83898c', '#9e846b', '#e2bf9c' ]
 
 var baseAlleles = ['coal', 'bark', 'cork'];
 var dilutionAlleles = ['dense', 'dilute'];
