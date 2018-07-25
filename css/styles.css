@@ -24,3 +24,9 @@
   top: 10px;
   background-color: #7c8d9b
 }
+
+.quirshiCanvas {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

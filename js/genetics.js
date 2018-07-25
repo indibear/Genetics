@@ -69,21 +69,23 @@ function renderVillage(){
   for (q of quirshiPopulation) {
     var span = document.createElement("SPAN");
     span.classList.add("quirshiPanel");
-    // if(q.dilution[0] == 0){
-    //   span.style.backgroundColor = baseColours[q.base[0]];
-    // }else{
-    //   span.style.backgroundColor = diluteColours[q.base[0]];
-    // }
+    var backgroundColor = "black";
+    if(q.dilution[0] == 0){
+      backgroundColor = baseColours[q.base[0]];
+    }else{
+      backgroundColor = diluteColours[q.base[0]];
+    }
     //var textnode = document.createTextNode(baseAlleles[q.base[0]] + " | " + (baseAlleles[q.base[1]]));
     //span.appendChild(textnode);
     pop.appendChild(span);
     var canvas = document.createElement("CANVAS");
-    renderQuirshi(canvas, imgs, 0, 0, 200, 200);
+    canvas.classList.add("quirshiCanvas");
+    renderQuirshi(canvas, imgs, 0, 0, 200, 110, backgroundColor);   //image size is 700x and 387y
     span.appendChild(canvas);
   }
 }
 
-function renderQuirshi(canvas, imgs, x, y, width, height){
+function renderQuirshi(canvas, imgs, x, y, width, height, colour){
   base=imgs[0];
   spots=imgs[1];
   lines=imgs[2];
@@ -93,7 +95,7 @@ function renderQuirshi(canvas, imgs, x, y, width, height){
   ctx.drawImage(base,0, 0, width, height);
 
   ctx.globalCompositeOperation="source-in";
-  ctx.fillStyle="#2f3030";
+  ctx.fillStyle=colour;
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
   ctx.globalCompositeOperation="source-atop";
