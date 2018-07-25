@@ -54,6 +54,7 @@ for (q of quirshiPopulation) {
    var imgs=[];
    imageURLs.push("imgs/QuirshiBase.png");
    imageURLs.push("imgs/QuirshiColour.png");
+   imageURLs.push("imgs/QuirshiLines.png");
 
 
    function loadAllImages(){
@@ -70,7 +71,7 @@ for (q of quirshiPopulation) {
         // all images are fully loaded an ready to use
         base=imgs[0];
         colour=imgs[1];
-        overlay=imgs[1];
+        lines=imgs[2];
         console.log("imagesAllLoaded");
         start();
      }
@@ -81,33 +82,20 @@ for (q of quirshiPopulation) {
         // save the context state
         ctx.save();
 
-        // draw the overlay
-        ctx.drawImage(overlay,150,35);
+        // draw the lines
+        ctx.drawImage(base,0, 0);
 
-        // change composite mode to source-in
-        // any new drawing will only overwrite existing pixels
         ctx.globalCompositeOperation="source-in";
+        ctx.fillStyle="#2f3030";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
 
-        // draw a purple rectangle the size of the canvas
-        // Only the overlay will become purple
-        //ctx.fillStyle="red";
-        //ctx.fillRect(0,0,canvas.width,canvas.height);
+         ctx.globalCompositeOperation="source-atop";
+         ctx.drawImage(colour,0,0);
 
-        // change the composite mode to destination-atop
-        // any new drawing will not overwrite any existing pixels
-        ctx.globalCompositeOperation="destination-atop";
+        ctx.globalCompositeOperation="multiply";
+        ctx.drawImage(lines,0,0);
 
-        // draw the full colour
-        // This will NOT overwrite any existing purple overlay pixels
-        ctx.drawImage(colour,150,35);
 
-        // draw the base
-        // This will NOT replace any existing pixels
-        // The purple overlay will not be overwritten
-        // The blue colour will not be overwritten
-        ctx.drawImage(base,0,0);
-
-        // restore the context to it's original state
         ctx.restore();
           console.log("here2")
     }
