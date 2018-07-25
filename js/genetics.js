@@ -1,5 +1,5 @@
-var baseColours = ['#2f3030', '#442e09', '#89602a' ]
-var diluteColours = ['#83898c', '#9e846b', '#e2bf9c' ]
+var baseColours = ['#2f3030', '#4c3e33', '#aa815f' ]
+var diluteColours = ['#83898c', '#8e847c', '#ccb39f' ]
 
 var baseAlleles = ['coal', 'bark', 'cork'];
 var dilutionAlleles = ['dense', 'dilute'];
@@ -31,7 +31,7 @@ class Quirshi {
 quirshiPopulation = [];
 var imgs=[];
 
-for (var i = 0; i <10; i ++){
+for (var i = 0; i <50; i ++){
   genome = QuirshiGenome.randomGenotype();
   quirshiPopulation.push(genome);
 }
