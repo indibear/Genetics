@@ -23,27 +23,25 @@ function renderVillage(){
     pop.appendChild(span);
     var canvas = document.createElement("CANVAS");
     canvas.classList.add("quirshiCanvas");
-    renderQuirshi(canvas, imgs, 0, 0, quirshi);   //image size is 700x and 387y
+    renderQuirshi(canvas, 0, 0, quirshi);   //image size is 700x and 387y
     span.appendChild(canvas);
     var textSpan = document.createElement("SPAN");
     span.classList.add("quirshiTextPanel");
-    console.log(quirshi.base)
     textSpan.innerText= "[" + baseAlleles[quirshi.base[0]]+
                         " "+ baseAlleles[quirshi.base[1]]+ "]\n"+
                         spottingAlleles[quirshi.spotting[0]] + " " +
                         spottingAlleles[quirshi.spotting[1]] + "\n" +
                         "[" + dilutionAlleles[quirshi.dilution[0]]+
-                                            " "+ dilutionAlleles[quirshi.dilution[1]]+ "]";
+                        " "+ dilutionAlleles[quirshi.dilution[1]]+ "]\n"+
+                        "[" + whiteAlleles[quirshi.white[0]]+
+                        " "+ whiteAlleles[quirshi.white[1]]+ "]";
     span.appendChild(textSpan);
 
   }
 }
 
-function renderQuirshi(canvas, imgs, x, y, quirshi){
-  base=imgs[0];
-  highSpots=imgs[1];
-  lowSpots=imgs[2];
-  lines=imgs[3];
+function renderQuirshi(canvas, x, y, quirshi){
+
   width=200;
   height=110;
 
@@ -52,12 +50,15 @@ function renderQuirshi(canvas, imgs, x, y, quirshi){
 
   ctx.drawImage(base,0, 0, width, height);
 
-  var backgroundColour = "black";
-  if(quirshi.dilution[0] == 0){
-    backgroundColour = baseColours[quirshi.base[0]];
-  }else{
-    backgroundColour = diluteColours[quirshi.base[0]];
+  var backgroundColour = '#DEDEDE';
+  if(quirshi.white[0] == 1 && quirshi.white[1] == 1){
+    if(quirshi.dilution[0] == 0){
+      backgroundColour = baseColours[quirshi.base[0]];
+    }else{
+      backgroundColour = diluteColours[quirshi.base[0]];
+    }
   }
+
 
   ctx.globalCompositeOperation="source-in";
   ctx.fillStyle=backgroundColour;

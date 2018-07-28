@@ -3,6 +3,7 @@ var baseAlleles = ['coal', 'bark', 'cork'];
 var dilutionAlleles = ['dense', 'dilute'];
 
 var spottingAlleles = ["high", "low", "off"];
+var whiteAlleles = [true, false]
 
 class QuirshiGenome {
   static selectRandomElementPair(arr){
@@ -14,13 +15,15 @@ class QuirshiGenome {
     var base = QuirshiGenome.selectRandomElementPair(baseAlleles);
     var dilution = QuirshiGenome.selectRandomElementPair(dilutionAlleles);
     var spotting = QuirshiGenome.selectRandomElementPair(spottingAlleles);
-    return new QuirshiGenome(base, dilution, spotting);
+    var white = QuirshiGenome.selectRandomElementPair(whiteAlleles);
+    return new QuirshiGenome(base, dilution, spotting, white);
   }
 
-  constructor(base, dilution, spotting) {
+  constructor(base, dilution, spotting, white) {
     this.base = base;
     this.dilution = dilution;
     this.spotting = spotting;
+    this.white = white;
   }
 }
 
