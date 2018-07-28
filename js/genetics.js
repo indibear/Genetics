@@ -1,36 +1,6 @@
 var baseColours = ['#2f3030', '#4c3e33', '#aa815f' ]
 var diluteColours = ['#83898c', '#8e847c', '#d8c5b6' ]
 
-var baseAlleles = ['coal', 'bark', 'cork'];
-var dilutionAlleles = ['dense', 'dilute'];
-
-var spottingAlleles = ["high", "low", "off"];
-
-class QuirshiGenome {
-  static selectRandomElementPair(arr){
-    var elementPair = [Math.floor(Math.random() * arr.length),Math.floor(Math.random() * arr.length)];
-    elementPair.sort();
-    return elementPair;
-  }
-  static randomGenotype(){
-    var base = QuirshiGenome.selectRandomElementPair(baseAlleles);
-    var dilution = QuirshiGenome.selectRandomElementPair(dilutionAlleles);
-    var spotting = QuirshiGenome.selectRandomElementPair(spottingAlleles);
-    return new QuirshiGenome(base, dilution, spotting);
-  }
-
-  constructor(base, dilution, spotting) {
-    this.base = base;
-    this.dilution = dilution;
-    this.spotting = spotting;
-  }
-}
-
-class Quirshi {
-  constructor(genome){
-    this.genome = genome;
-  }
-}
 
 quirshiPopulation = [];
 var imgs=[];
@@ -41,33 +11,6 @@ for (var i = 0; i <50; i ++){
 }
 
 
-var imageURLs=[];
-var imagesOK=0;
-imageURLs.push("imgs/QuirshiBase.png");
-imageURLs.push("imgs/QuirshiSpottingHigh.png");
-imageURLs.push("imgs/QuirshiSpottingLow.png");
-imageURLs.push("imgs/QuirshiLines.png");
-
-
-function loadAllImages(){
-   for (var i = 0; i < imageURLs.length; i++) {
-     var img = new Image();
-     imgs.push(img);
-     img.onload = function(){ imagesOK++; imagesAllLoaded(); };
-     img.src = imageURLs[i];
-   }
-}
-
-var imagesAllLoaded = function() {
- if (imagesOK==imageURLs.length ) {
-    // all images are fully loaded an ready to use
-    base=imgs[0];
-    highSpots=imgs[1];
-    lowSpots=imgs[2];
-    lines=imgs[3];
-    renderVillage();
- }
-}
 
 
 function renderVillage(){
